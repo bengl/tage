@@ -12,24 +12,23 @@ const wrapped = tage(testFn)
 const topThis = (function () { return this })()
 const bop = {
   toString: () => 'bop',
-  wrapped: wrapped
+  wrapped
 }
-const p = fn => Promise.resolve().then(fn)
 
-test`function works as normal`(p(() => {
+test`function works as normal`(() => {
   equal(wrapped('foo', 'bar', 'baz'), 'foo bar baz ' + topThis)
-}))
+})
 
-test`function works as normal with context`(p(() => {
+test`function works as normal with context`(() => {
   equal(bop.wrapped('foo', 'bar', 'baz'), 'foo bar baz bop')
-}))
+})
 
-test`function works with template string`(p(() => {
+test`function works with template string`(() => {
   equal(wrapped`foo`('bar', 'baz'), 'foo bar baz ' + topThis)
-}))
+})
 
-test`function works with template string with context`(p(() => {
+test`function works with template string with context`(() => {
   equal(bop.wrapped`foo`('bar', 'baz'), 'foo bar baz bop')
-}))
+})
 
 test()
