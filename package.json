@@ -24,6 +24,6 @@
   "homepage": "https://github.com/bengl/tage#readme",
   "devDependencies": {
     "pitesti": "^2.1.0",
-    "standard": "^5.4.1"
+    "standard": "^14.3.1"
   }
 }

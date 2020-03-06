@@ -10,10 +10,10 @@ const slice = Array.prototype.slice
 function wrap (orig) {
   return function () {
     if (Array.isArray(arguments[0])) {
-      let self = this
-      let firstArg = String.raw(arguments[0], slice.call(arguments, 1))
+      const self = this
+      const firstArg = String.raw(arguments[0], slice.call(arguments, 1))
       return function () {
-        let args = slice.call(arguments)
+        const args = slice.call(arguments)
         args.unshift(firstArg)
         return orig.apply(self, args)
       }
