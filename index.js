@@ -5,22 +5,10 @@ See LICENSE.txt
 */
 'use strict'
 
-const slice = Array.prototype.slice
-
-function wrap (orig) {
-  return function () {
-    if (Array.isArray(arguments[0])) {
-      const self = this
-      const firstArg = String.raw(arguments[0], slice.call(arguments, 1))
-      return function () {
-        const args = slice.call(arguments)
-        args.unshift(firstArg)
-        return orig.apply(self, args)
-      }
-    } else {
-      return orig.apply(this, arguments)
-    }
+module.exports = orig => function (str, ...subs) {
+  if (Array.isArray(str)) {
+    return (...args) => orig.call(this, String.raw(str, ...subs), ...args)
+  } else {
+    return orig.apply(this, arguments)
   }
 }
-
-module.exports = wrap
