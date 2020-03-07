@@ -21,6 +21,9 @@
   "bugs": {
     "url": "https://github.com/bengl/tage/issues"
   },
+  "engines" : {
+    "node" : ">=6"
+  }.
   "homepage": "https://github.com/bengl/tage#readme",
   "devDependencies": {
     "pitesti": "^3.0.0",
